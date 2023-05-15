@@ -26,6 +26,17 @@ modules:
       - type: dir
         path: '.'
     modules:
+      - name: libass
+        cleanup:
+          - /include
+          - /lib/*.la
+          - /lib/pkgconfig
+        config-opts:
+          - '--disable-static'
+        sources:
+          - type: archive
+            url: 'https://github.com/libass/libass/releases/download/0.17.1/libass-0.17.1.tar.gz'
+            sha256: 'd653be97198a0543c69111122173c41a99e0b91426f9e17f06a858982c2fb03d'
       - name: libmpv
         cleanup:
           - /include
@@ -123,18 +134,6 @@ modules:
               - type: archive
                 url: 'https://ffmpeg.org/releases/ffmpeg-6.0.tar.gz'
                 sha256: 'f4ccf961403752c93961927715f524576d1f4dd02cd76d8c76aed3bbe6686656'
-
-          - name: libass
-            cleanup:
-              - /include
-              - /lib/*.la
-              - /lib/pkgconfig
-            config-opts:
-              - '--disable-static'
-            sources:
-              - type: archive
-                url: 'https://github.com/libass/libass/releases/download/0.17.1/libass-0.17.1.tar.gz'
-                sha256: 'd653be97198a0543c69111122173c41a99e0b91426f9e17f06a858982c2fb03d'
 
           - name: uchardet
             buildsystem: cmake-ninja
